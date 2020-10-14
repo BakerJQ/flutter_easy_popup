@@ -3,6 +3,12 @@
 
 An easy way to show a flutter custom popup widget.
 
+## Screenshot
+| Android | iOS |
+| :------: | :------: |
+| ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/android.gif) |
+![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/iOS.gif) |
+
 ## Example
 ```
 cd ./example
@@ -10,8 +16,8 @@ flutter create .
 flutter run
 ```
 
-## How to use
-### Add dependencies
+## Getting Started
+
 ```yaml
 dependencies:
   easy_popup: ^1.0.0
@@ -23,8 +29,8 @@ dependencies:
     git: https://github.com/BakerJQ/flutter_easy_popup.git
 ```
 
-### 1. Define custom popup widget with Mixin *EasyPopupChild*
-Define your custom popup widget with *EasyPopupChild*, and implement *dismiss* function which does work that need to be done while dismiss, eg. show dismiss animation
+## Define Custom Popup Widget
+Define your custom popup widget with *EasyPopupChild*, and implement *dismiss* function which does work that need to be done while dismiss, eg. show dismiss animation.
 ```dart
 class CustomWidget extends StatefulWidget with EasyPopupChild {
 
@@ -37,7 +43,8 @@ class CustomWidget extends StatefulWidget with EasyPopupChild {
 }
 ```
 
-### 2. Call show function
+## Call Show
+Call *EasyPopup.show()* to show your widget as a popup.
 ```dart
 EasyPopup.show(context, CustomWidget());
 ```
