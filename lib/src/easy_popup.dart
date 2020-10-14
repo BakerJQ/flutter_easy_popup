@@ -4,10 +4,12 @@ import 'easy_popup_child.dart';
 import 'easy_popup_route.dart';
 
 class EasyPopup {
+  ///Dismiss the popup related to the specific BuildContext
   static pop(BuildContext context) {
     EasyPopupRoute.pop(context);
   }
 
+  ///Show popup
   static show(
     BuildContext context,
     EasyPopupChild child, {
@@ -31,6 +33,7 @@ class EasyPopup {
     );
   }
 
+  ///Set popup highlight positions
   static setHighlights(BuildContext context, List<RRect> highlights) {
     EasyPopupRoute.setHighlights(context, highlights);
   }
