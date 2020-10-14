@@ -1,14 +1,38 @@
 # flutter_easy_popup
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-A new Flutter package.
+An easy way to show a flutter custom popup widget.
 
-## Getting Started
+## Example
+```
+cd ./example
+flutter create .
+flutter run
+```
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## How to use
+### Add dependencies
+```yaml
+dependencies:
+  easy_popup: ^1.0.0
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### 1. Define custom popup widget with Mixin *EasyPopupChild*
+Define your custom popup widget with *EasyPopupChild*, and implement *dismiss* function which does work that need to be done while dismiss, eg. show dismiss animation
+```dart
+class CustomWidget extends StatefulWidget with EasyPopupChild {
+
+  ...
+
+  @override
+  dismiss() {
+    ...
+  }
+}
+```
+
+### 2. Call show function
+```dart
+EasyPopup.show(context, CustomWidget());
+```
+
