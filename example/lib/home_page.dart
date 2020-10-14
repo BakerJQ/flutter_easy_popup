@@ -10,7 +10,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  GlobalKey key1 = new GlobalKey(), key2 = new GlobalKey();
+  GlobalKey key1 = new GlobalKey(),
+      key2 = new GlobalKey(),
+      key3 = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,22 @@ class _HomeState extends State<Home> {
                 color: Colors.blueAccent,
                 alignment: Alignment.center,
                 child: Text(
-                  'ShowHighLightPopup',
+                  'ShowGuidePopup',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            GestureDetector(
+              key: key3,
+              behavior: HitTestBehavior.opaque,
+              onTap: _showMultiHighlightsGuidePopup,
+              child: Container(
+                width: 200,
+                height: 50,
+                color: Colors.blueAccent,
+                alignment: Alignment.center,
+                child: Text(
+                  'ShowMultiHighlightPopup',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -82,7 +99,33 @@ class _HomeState extends State<Home> {
     ];
     EasyPopup.show(
       context,
-      GuidePopup([key1, key2]),
+      GuidePopup([key1, key2, key3]),
+      cancelable: false,
+      highlights: highlights,
+      duration: Duration(milliseconds: 100),
+    );
+  }
+
+  _showMultiHighlightsGuidePopup() {
+    List<GlobalKey> keys = [key1, key2, key3];
+    List<RRect> highlights = [];
+    for (GlobalKey key in keys) {
+      RenderBox box = key.currentContext.findRenderObject();
+      Offset offset = box.localToGlobal(Offset.zero);
+      double left = offset.dx - 5;
+      double top = offset.dy - 5;
+      double width = box.size.width + 10;
+      double height = box.size.height + 10;
+      highlights.add(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(left, top, width, height),
+          Radius.circular(10),
+        ),
+      );
+    }
+    EasyPopup.show(
+      context,
+      GuidePopup([key1]),
       cancelable: false,
       highlights: highlights,
       duration: Duration(milliseconds: 100),
