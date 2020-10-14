@@ -2,7 +2,7 @@ import 'package:easy_popup/easy_popup.dart';
 import 'package:flutter/material.dart';
 
 import 'drop_down_menu.dart';
-import 'highlight_popup.dart';
+import 'guide_popup.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  GlobalKey key = new GlobalKey();
+  GlobalKey key1 = new GlobalKey(), key2 = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,10 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             GestureDetector(
+              key: key1,
               behavior: HitTestBehavior.opaque,
               onTap: _showDropDownMenu,
               child: Container(
@@ -41,20 +42,17 @@ class _HomeState extends State<Home> {
               ),
             ),
             GestureDetector(
-              key: key,
+              key: key2,
               behavior: HitTestBehavior.opaque,
               onTap: _showGuidePopup,
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Container(
-                  width: 200,
-                  height: 50,
-                  color: Colors.blueAccent,
-                  alignment: Alignment.center,
-                  child: Text(
-                    'ShowHighLightPopup',
-                    style: TextStyle(color: Colors.white),
-                  ),
+              child: Container(
+                width: 200,
+                height: 50,
+                color: Colors.blueAccent,
+                alignment: Alignment.center,
+                child: Text(
+                  'ShowHighLightPopup',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -70,6 +68,24 @@ class _HomeState extends State<Home> {
   }
 
   _showGuidePopup() {
-    EasyPopup.show(context, HighLightPopup(key), highlightWidgetKey: key);
+    RenderBox box = key1.currentContext.findRenderObject();
+    Offset offset = box.localToGlobal(Offset.zero);
+    double left = offset.dx - 5;
+    double top = offset.dy - 5;
+    double width = box.size.width + 10;
+    double height = box.size.height + 10;
+    List<RRect> highlights = [
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(left, top, width, height),
+        Radius.circular(10),
+      ),
+    ];
+    EasyPopup.show(
+      context,
+      GuidePopup([key1, key2]),
+      cancelable: false,
+      highlights: highlights,
+      duration: Duration(milliseconds: 100),
+    );
   }
 }

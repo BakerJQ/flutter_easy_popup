@@ -2,7 +2,7 @@ import 'package:easy_popup/easy_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class DropDownMenu extends StatefulWidget with PopupChild {
+class DropDownMenu extends StatefulWidget with EasyPopupChild {
   final _PopController controller = _PopController();
 
   @override

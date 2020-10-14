@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'easy_popup_child.dart';
 import 'easy_popup_route.dart';
-import 'popup_child.dart';
 
 class EasyPopup {
   static pop(BuildContext context) {
@@ -10,13 +10,13 @@ class EasyPopup {
 
   static show(
     BuildContext context,
-    PopupChild child, {
+    EasyPopupChild child, {
     Offset offsetLT,
     Offset offsetRB,
     bool cancelable = true,
     bool darkEnable = true,
     Duration duration = const Duration(milliseconds: 300),
-    GlobalKey highlightWidgetKey,
+    List<RRect> highlights,
   }) {
     Navigator.of(context).push(
       EasyPopupRoute(
@@ -26,8 +26,12 @@ class EasyPopup {
         cancelable: cancelable,
         darkEnable: darkEnable,
         duration: duration,
-        highlightWidgetKey: highlightWidgetKey,
+        highlights: highlights,
       ),
     );
+  }
+
+  static setHighlights(BuildContext context, List<RRect> highlights) {
+    EasyPopupRoute.setHighlights(context, highlights);
   }
 }

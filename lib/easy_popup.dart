@@ -1,2 +1,2 @@
 export 'src/easy_popup.dart';
-export 'src/popup_child.dart';
+export 'src/easy_popup_child.dart';
