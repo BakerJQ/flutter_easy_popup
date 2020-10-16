@@ -6,10 +6,16 @@ An easy way to show a flutter custom popup widget.
 ## Screenshot
 | Android | iOS |
 | :------: | :------: |
-| ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/android.gif) |
-![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/iOS.gif) |
+| ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/android.gif) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/iOS.gif) |
+
+| Example | Screenshot |
+| :------: | :------: |
+| [Dropdown Menu](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/drop_down_menu.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/dropdown.gif) |
+| [App Operation Guide](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/guide_popup.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/guide.gif) |
+| [Multi Highlights](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/home_page.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/multi_highlights.gif) |
 
 ## Example
+You can run example by commands below.
 ```
 cd ./example
 flutter create .
@@ -29,7 +35,9 @@ dependencies:
     git: https://github.com/BakerJQ/flutter_easy_popup.git
 ```
 
-## Define Custom Popup Widget
+## Usage
+
+### Define Custom Popup Widget
 Define your custom popup widget with *EasyPopupChild*, and implement *dismiss* function which does work that need to be done while dismiss, eg. show dismiss animation.
 ```dart
 class CustomWidget extends StatefulWidget with EasyPopupChild {
@@ -43,9 +51,28 @@ class CustomWidget extends StatefulWidget with EasyPopupChild {
 }
 ```
 
-## Call Show
+### Call Show
 Call *EasyPopup.show()* to show your widget as a popup.
 ```dart
 EasyPopup.show(context, CustomWidget());
 ```
+
+### Call pop
+Call *EasyPopup.pop()* to dismiss the popup.
+```dart
+EasyPopup.pop(context);
+```
+
+### Params
+| Param | Desc |
+| :------: | :------: |
+| context | BuildContext |
+| child | Your popup widget |
+| offsetLT | Left and Top offset of the dark background |
+| offsetRB | Right and Bottom offset of the dark background |
+| cancelable | Whether the popup can be dismissed by touch the outside area, or press back button on Android |
+| darkEnable | Whether to show the dark background |
+| duration | Duration to show the animation |
+| highlights | Rects to show highlight area |
+
 
