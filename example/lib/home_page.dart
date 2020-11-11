@@ -1,4 +1,5 @@
 import 'package:easy_popup/easy_popup.dart';
+import 'package:easy_popup_example/loading.dart';
 import 'package:flutter/material.dart';
 
 import 'drop_down_menu.dart';
@@ -12,7 +13,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   GlobalKey key1 = new GlobalKey(),
       key2 = new GlobalKey(),
-      key3 = new GlobalKey();
+      key3 = new GlobalKey(),
+      key4 = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +75,21 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            GestureDetector(
+              key: key4,
+              behavior: HitTestBehavior.opaque,
+              onTap: _showLoading,
+              child: Container(
+                color: Colors.blueAccent,
+                alignment: Alignment.center,
+                width: 200,
+                height: 50,
+                child: Text(
+                  'ShowLoading',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -82,6 +99,11 @@ class _HomeState extends State<Home> {
   _showDropDownMenu() {
     EasyPopup.show(context, DropDownMenu(),
         offsetLT: Offset(0, MediaQuery.of(context).padding.top + 50));
+  }
+
+  _showLoading() {
+    EasyPopup.show(context, Loading(),
+        darkEnable: false, duration: Duration(milliseconds: 0));
   }
 
   _showGuidePopup() {
@@ -99,7 +121,7 @@ class _HomeState extends State<Home> {
     ];
     EasyPopup.show(
       context,
-      GuidePopup([key1, key2, key3]),
+      GuidePopup([key1, key2, key3, key4]),
       cancelable: false,
       highlights: highlights,
       duration: Duration(milliseconds: 100),
@@ -107,7 +129,7 @@ class _HomeState extends State<Home> {
   }
 
   _showMultiHighlightsGuidePopup() {
-    List<GlobalKey> keys = [key1, key2, key3];
+    List<GlobalKey> keys = [key1, key2, key3, key4];
     List<RRect> highlights = [];
     for (GlobalKey key in keys) {
       RenderBox box = key.currentContext.findRenderObject();

@@ -4,15 +4,14 @@
 An easy way to show a flutter custom popup widget.
 
 ## Screenshot
-| Android | iOS |
-| :------: | :------: |
-| ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/android.gif) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/iOS.gif) |
 
 | Example | Screenshot |
 | :------: | :------: |
 | [Dropdown Menu](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/drop_down_menu.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/dropdown.gif) |
 | [App Operation Guide](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/guide_popup.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/guide.gif) |
 | [Multi Highlights](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/home_page.dart) | ![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/multi_highlights.gif) |
+| [Loading](https://github.com/BakerJQ/flutter_easy_popup/blob/master/example/lib/loading.dart) |
+![](https://raw.githubusercontent.com/BakerJQ/flutter_easy_popup/master/screenshot/loading.gif) |
 
 ## Example
 You can run example by commands below.

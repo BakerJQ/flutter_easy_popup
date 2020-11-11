@@ -59,6 +59,8 @@ class _GuidePopupState extends State<GuidePopup> {
         return 'Click here to show guide.';
       case 2:
         return 'Click here to show multi highlight guide.';
+      case 3:
+        return 'Click here to show loading.';
     }
     return '';
   }

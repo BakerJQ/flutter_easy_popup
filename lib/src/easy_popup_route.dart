@@ -7,6 +7,7 @@ class EasyPopupRoute extends PopupRoute {
   final Offset offsetLT, offsetRB;
   final Duration duration;
   final bool cancelable;
+  final bool outsideTouchCancelable;
   final bool darkEnable;
   final List<RRect> highlights;
 
@@ -15,6 +16,7 @@ class EasyPopupRoute extends PopupRoute {
     this.offsetLT,
     this.offsetRB,
     this.cancelable = true,
+    this.outsideTouchCancelable = true,
     this.darkEnable = true,
     this.duration = const Duration(milliseconds: 300),
     this.highlights,
@@ -38,6 +40,7 @@ class EasyPopupRoute extends PopupRoute {
       offsetRB: offsetRB,
       duration: duration,
       cancelable: cancelable,
+      outsideTouchCancelable: outsideTouchCancelable,
       darkEnable: darkEnable,
       highlights: highlights,
     );
@@ -61,6 +64,7 @@ class _PopRouteWidget extends StatefulWidget {
   final Offset offsetLT, offsetRB;
   final Duration duration;
   final bool cancelable;
+  final bool outsideTouchCancelable;
   final bool darkEnable;
   final List<RRect> highlights;
 
@@ -70,6 +74,7 @@ class _PopRouteWidget extends StatefulWidget {
     this.offsetRB,
     this.duration,
     this.cancelable,
+    this.outsideTouchCancelable,
     this.darkEnable,
     this.highlights,
   });
@@ -129,7 +134,7 @@ class __PopRouteWidgetState extends State<_PopRouteWidget>
       },
       child: GestureDetector(
         onTap: () {
-          if (widget.cancelable) {
+          if (widget.outsideTouchCancelable) {
             dismiss();
             Navigator.of(context).pop();
           }
