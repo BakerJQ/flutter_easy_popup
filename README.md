@@ -68,7 +68,8 @@ EasyPopup.pop(context);
 | child | Your popup widget |
 | offsetLT | Left and Top offset of the dark background |
 | offsetRB | Right and Bottom offset of the dark background |
-| cancelable | Whether the popup can be dismissed by touch the outside area, or press back button on Android |
+| cancelable | Whether the popup can be dismissed by pressing back button on Android |
+| outsideTouchCancelable | Whether the popup can be dismissed by touch the outside area |
 | darkEnable | Whether to show the dark background |
 | duration | Duration to show the animation |
 | highlights | Rects to show highlight area |
