@@ -175,10 +175,7 @@ class __PopRouteWidgetState extends State<_PopRouteWidget>
   List<Widget> _buildDark() {
     List<Widget> widgets = [];
     widgets.add(Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        backgroundBlendMode: BlendMode.dstOut,
-      ),
+      color: Colors.transparent,
     ));
     for (RRect highlight in _highlights) {
       widgets.add(Positioned(
