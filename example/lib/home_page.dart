@@ -103,7 +103,9 @@ class _HomeState extends State<Home> {
 
   _showLoading() {
     EasyPopup.show(context, Loading(),
-        darkEnable: false, duration: Duration(milliseconds: 0));
+        // darkEnable: false,
+        opacity: 0,
+        duration: Duration(milliseconds: 0));
   }
 
   _showGuidePopup() {
