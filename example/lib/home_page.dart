@@ -97,13 +97,19 @@ class _HomeState extends State<Home> {
   }
 
   _showDropDownMenu() {
-    EasyPopup.show(context, DropDownMenu(),
-        offsetLT: Offset(0, MediaQuery.of(context).padding.top + 50));
+    DropDownMenu dropDownMenu = DropDownMenu();
+    EasyPopup.show(context, dropDownMenu,
+      offsetLT: Offset(0, MediaQuery.of(context).padding.top + 50),
+      onPopupDismiss: (){
+        dropDownMenu.dismiss();
+      });
   }
 
   _showLoading() {
     EasyPopup.show(context, Loading(),
-        darkEnable: false, duration: Duration(milliseconds: 0));
+        // darkEnable: false,
+        opacity: 0,
+        duration: Duration(milliseconds: 0));
   }
 
   _showGuidePopup() {

@@ -1,7 +1,7 @@
 import 'package:easy_popup/easy_popup.dart';
 import 'package:flutter/material.dart';
 
-class GuidePopup extends StatefulWidget with EasyPopupChild {
+class GuidePopup extends StatefulWidget {
   final List<GlobalKey> highlightKeys;
 
   GuidePopup(this.highlightKeys);
@@ -9,8 +9,6 @@ class GuidePopup extends StatefulWidget with EasyPopupChild {
   @override
   _GuidePopupState createState() => _GuidePopupState();
 
-  @override
-  dismiss() {}
 }
 
 class _GuidePopupState extends State<GuidePopup> {

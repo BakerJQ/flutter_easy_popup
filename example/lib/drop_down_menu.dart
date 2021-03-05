@@ -2,15 +2,19 @@ import 'package:easy_popup/easy_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class DropDownMenu extends StatefulWidget with EasyPopupChild {
-  final _PopController controller = _PopController();
+class DropDownMenu extends StatefulWidget {
+  _DropDownMenuState _state;
+  final Key key;
+  DropDownMenu({this.key}): super(key: key);
 
   @override
-  _DropDownMenuState createState() => _DropDownMenuState();
+  _DropDownMenuState createState() {
+    _state = _DropDownMenuState();
+    return _state;
+  }
 
-  @override
   dismiss() {
-    controller.dismiss();
+    _state.dismiss();
   }
 }
 
@@ -21,8 +25,8 @@ class _DropDownMenuState extends State<DropDownMenu>
 
   @override
   void initState() {
+
     super.initState();
-    widget.controller._bindState(this);
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
@@ -38,8 +42,8 @@ class _DropDownMenuState extends State<DropDownMenu>
 
   @override
   void dispose() {
-    super.dispose();
     _controller?.dispose();
+    super.dispose();
   }
 
   @override
@@ -63,7 +67,7 @@ class _DropDownMenuState extends State<DropDownMenu>
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
                       Fluttertoast.showToast(msg: 'item$index');
-                      EasyPopup.pop(context);
+                      Navigator.of(context).pop();
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -79,17 +83,5 @@ class _DropDownMenuState extends State<DropDownMenu>
         ),
       ),
     );
-  }
-}
-
-class _PopController {
-  _DropDownMenuState state;
-
-  _bindState(_DropDownMenuState state) {
-    this.state = state;
-  }
-
-  dismiss() {
-    state?.dismiss();
   }
 }
