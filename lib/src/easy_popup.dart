@@ -13,13 +13,13 @@ class EasyPopup {
   static show(
     BuildContext context,
     EasyPopupChild child, {
-    Offset offsetLT,
-    Offset offsetRB,
+    Offset? offsetLT,
+    Offset? offsetRB,
     bool cancelable = true,
     bool outsideTouchCancelable = true,
     bool darkEnable = true,
     Duration duration = const Duration(milliseconds: 300),
-    List<RRect> highlights,
+    List<RRect>? highlights,
   }) {
     Navigator.of(context).push(
       EasyPopupRoute(

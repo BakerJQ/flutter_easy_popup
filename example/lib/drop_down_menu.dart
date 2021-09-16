@@ -16,8 +16,8 @@ class DropDownMenu extends StatefulWidget with EasyPopupChild {
 
 class _DropDownMenuState extends State<DropDownMenu>
     with SingleTickerProviderStateMixin {
-  Animation<Offset> _animation;
-  AnimationController _controller;
+  late Animation<Offset> _animation;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -33,13 +33,13 @@ class _DropDownMenuState extends State<DropDownMenu>
   }
 
   dismiss() {
-    _controller?.reverse();
+    _controller.reverse();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _controller?.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -83,13 +83,13 @@ class _DropDownMenuState extends State<DropDownMenu>
 }
 
 class _PopController {
-  _DropDownMenuState state;
+  late _DropDownMenuState state;
 
   _bindState(_DropDownMenuState state) {
     this.state = state;
   }
 
   dismiss() {
-    state?.dismiss();
+    state.dismiss();
   }
 }

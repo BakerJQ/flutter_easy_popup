@@ -15,14 +15,14 @@ class GuidePopup extends StatefulWidget with EasyPopupChild {
 
 class _GuidePopupState extends State<GuidePopup> {
   int highlightIndex = -1;
-  double hLeft, hTop, hWidth, hHeight, hRadius;
+  late double hLeft, hTop, hWidth, hHeight, hRadius;
 
   @override
   void initState() {
     super.initState();
-    Rect rect = _calculateNextGuide();
+    Rect? rect = _calculateNextGuide();
     hRadius = 10;
-    hLeft = rect.left;
+    hLeft = rect!.left;
     hTop = rect.top;
     hHeight = rect.height;
     hWidth = rect.width;
@@ -66,7 +66,7 @@ class _GuidePopupState extends State<GuidePopup> {
   }
 
   _next() {
-    Rect rect = _calculateNextGuide();
+    Rect? rect = _calculateNextGuide();
     if (rect == null) {
       return;
     }
@@ -85,15 +85,15 @@ class _GuidePopupState extends State<GuidePopup> {
     });
   }
 
-  Rect _calculateNextGuide() {
+  Rect? _calculateNextGuide() {
     highlightIndex++;
     if (highlightIndex >= widget.highlightKeys.length) {
       _dismiss();
       return null;
     }
-    RenderBox box =
-        widget.highlightKeys[highlightIndex].currentContext.findRenderObject();
-    Offset offset = box.localToGlobal(Offset.zero);
+    RenderBox? box = widget.highlightKeys[highlightIndex].currentContext!
+        .findRenderObject() as RenderBox?;
+    Offset offset = box!.localToGlobal(Offset.zero);
     return Rect.fromLTWH(
       offset.dx - 5,
       offset.dy - 5,

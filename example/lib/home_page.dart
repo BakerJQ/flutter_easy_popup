@@ -107,8 +107,8 @@ class _HomeState extends State<Home> {
   }
 
   _showGuidePopup() {
-    RenderBox box = key1.currentContext.findRenderObject();
-    Offset offset = box.localToGlobal(Offset.zero);
+    RenderBox? box = key1.currentContext!.findRenderObject() as RenderBox?;
+    Offset offset = box!.localToGlobal(Offset.zero);
     double left = offset.dx - 5;
     double top = offset.dy - 5;
     double width = box.size.width + 10;
@@ -132,8 +132,8 @@ class _HomeState extends State<Home> {
     List<GlobalKey> keys = [key1, key2, key3, key4];
     List<RRect> highlights = [];
     for (GlobalKey key in keys) {
-      RenderBox box = key.currentContext.findRenderObject();
-      Offset offset = box.localToGlobal(Offset.zero);
+      RenderBox? box = key.currentContext!.findRenderObject() as RenderBox?;
+      Offset offset = box!.localToGlobal(Offset.zero);
       double left = offset.dx - 5;
       double top = offset.dy - 5;
       double width = box.size.width + 10;
