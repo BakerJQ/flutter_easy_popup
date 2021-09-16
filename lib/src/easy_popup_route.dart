@@ -4,15 +4,15 @@ import 'easy_popup_child.dart';
 
 class EasyPopupRoute extends PopupRoute {
   final EasyPopupChild child;
-  final Offset offsetLT, offsetRB;
+  final Offset? offsetLT, offsetRB;
   final Duration duration;
   final bool cancelable;
   final bool outsideTouchCancelable;
   final bool darkEnable;
-  final List<RRect> highlights;
+  final List<RRect>? highlights;
 
   EasyPopupRoute({
-    @required this.child,
+    required this.child,
     this.offsetLT,
     this.offsetRB,
     this.cancelable = true,
@@ -23,13 +23,13 @@ class EasyPopupRoute extends PopupRoute {
   });
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
   bool get barrierDismissible => true;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
@@ -50,32 +50,32 @@ class EasyPopupRoute extends PopupRoute {
   Duration get transitionDuration => duration;
 
   static pop(BuildContext context) {
-    __PopRouteWidgetState.of(context).dismiss();
+    __PopRouteWidgetState.of(context)!.dismiss();
     Navigator.of(context).pop();
   }
 
   static setHighlights(BuildContext context, List<RRect> highlights) {
-    __PopRouteWidgetState.of(context).highlights = highlights;
+    __PopRouteWidgetState.of(context)!.highlights = highlights;
   }
 }
 
 class _PopRouteWidget extends StatefulWidget {
   final EasyPopupChild child;
-  final Offset offsetLT, offsetRB;
-  final Duration duration;
+  final Offset? offsetLT, offsetRB;
+  final Duration? duration;
   final bool cancelable;
   final bool outsideTouchCancelable;
   final bool darkEnable;
-  final List<RRect> highlights;
+  final List<RRect>? highlights;
 
   _PopRouteWidget({
-    this.child,
+    required this.child,
     this.offsetLT,
     this.offsetRB,
     this.duration,
-    this.cancelable,
-    this.outsideTouchCancelable,
-    this.darkEnable,
+    this.cancelable = true,
+    this.outsideTouchCancelable = true,
+    this.darkEnable = true,
     this.highlights,
   });
 
@@ -85,8 +85,8 @@ class _PopRouteWidget extends StatefulWidget {
 
 class __PopRouteWidgetState extends State<_PopRouteWidget>
     with SingleTickerProviderStateMixin {
-  Animation<double> alphaAnim;
-  AnimationController alphaController;
+  late Animation<double> alphaAnim;
+  late AnimationController alphaController;
   List<RRect> _highlights = [];
 
   @override
@@ -101,13 +101,13 @@ class __PopRouteWidgetState extends State<_PopRouteWidget>
     alphaController.forward();
   }
 
-  static __PopRouteWidgetState of(BuildContext context) {
+  static __PopRouteWidgetState? of(BuildContext context) {
     return context.findAncestorStateOfType<__PopRouteWidgetState>();
   }
 
   dismiss() {
-    alphaController?.reverse();
-    widget.child?.dismiss();
+    alphaController.reverse();
+    widget.child.dismiss();
   }
 
   set highlights(List<RRect> value) {
@@ -118,7 +118,7 @@ class __PopRouteWidgetState extends State<_PopRouteWidget>
 
   @override
   void dispose() {
-    alphaController?.dispose();
+    alphaController.dispose();
     super.dispose();
   }
 
